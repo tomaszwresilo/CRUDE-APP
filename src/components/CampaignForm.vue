@@ -1,6 +1,6 @@
 <template>
   <section class="campaign-section">
-    <form @submit="save">
+    <form @submit="save" @keydown.enter.prevent>
       <label for="name">📄 Campaign Name:</label>
       <input type="text" id="name" v-model="campaign.name" required /><br />
 
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     save() {
-      this.$emit('saveCampaign', ...this.campaign)
+      this.$emit('saveCampaign', this.campaign)
     }
   }
 }
