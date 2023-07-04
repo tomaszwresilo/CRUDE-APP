@@ -45,19 +45,9 @@ export default {
     }
   },
   methods: {
-    saveCampaign(event) {
-      event.preventDefault()
-
-      // Zaktualizuj obiekt campaign przy użyciu localStatus
-      this.campaign.status = this.localStatus
-
-      // Wyemituj zdarzenie, aby poinformować komponent nadrzędny o zmianie
-      this.$emit('campaign-updated', this.campaign)
-
-      // Zresetuj formularz
-      this.resetForm()
+    save() {
+      this.$emit('saveCampaign', this.campaign)
     }
-    // ...
   }
 }
 </script>
