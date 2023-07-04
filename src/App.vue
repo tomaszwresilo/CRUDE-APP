@@ -115,82 +115,10 @@ h1 {
   padding: 0;
 }
 
-.fund-section {
-  text-align: center;
-  margin: 10px;
-}
-
-.fund-section h2 {
-  margin-bottom: 10px;
-}
-
-.fund-section p {
-  margin-bottom: 0;
-  font-size: 18px;
-  color: #333;
-}
-
-.campaign-section {
-  margin-bottom: 40px;
-}
-
-#wrapper {
-  background-color: white;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-form label {
-  font-weight: bold;
-}
-
-form input,
-form select {
-  width: 100%;
-  padding: 8px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-form button {
-  width: 100%;
-  padding: 10px 20px;
-  margin-top: 10px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-form input:focus,
-form select:focus {
-  background-color: #f2f2f2;
-}
-
-main {
-  max-width: 100%;
-  background-color: #f8f8f8;
-  padding: 20px;
-  border-radius: 4px;
-}
-
 h2 {
   margin-top: 0;
   font-size: 20px;
   color: #333;
-}
-
-.campaign-item {
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h3 {
@@ -208,15 +136,10 @@ p {
   color: #555;
 }
 
-#deleteButton,
-#editButton {
-  margin-top: 10px;
-  padding: 5px;
-  font-size: 18px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
+#wrapper {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 @media only screen and (max-width: 600px) {

@@ -42,3 +42,28 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+main {
+  max-width: 100%;
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 4px;
+}
+.campaign-item {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#deleteButton,
+#editButton {
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+</style>

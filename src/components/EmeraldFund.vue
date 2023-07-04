@@ -15,3 +15,20 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.fund-section {
+  text-align: center;
+  margin: 10px;
+}
+
+.fund-section h2 {
+  margin-bottom: 10px;
+}
+
+.fund-section p {
+  margin-bottom: 0;
+  font-size: 18px;
+  color: #333;
+}
+</style>

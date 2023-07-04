@@ -51,3 +51,41 @@ export default {
   }
 }
 </script>
+<style scoped>
+form label {
+  font-weight: bold;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+form button {
+  width: 100%;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+form input:focus,
+form select:focus {
+  background-color: #f2f2f2;
+}
+
+.campaign-section {
+  margin-bottom: 40px;
+}
+</style>
