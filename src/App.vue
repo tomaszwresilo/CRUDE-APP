@@ -13,6 +13,7 @@
       :editedCampaignIndex="editedCampaignIndex"
       @remove="remove"
       @edit="edit"
+      @sortBy="handleSortBy"
     />
   </div>
 </template>
@@ -74,6 +75,16 @@ export default {
     edit(index) {
       this.editedCampaignIndex = index
       this.campaign = { ...this.campaigns[index] }
+    },
+    handleSortBy(key) {
+      this.sortBy(key)
+    },
+    sortBy(key) {
+      this.campaigns.sort((a, b) => {
+        if (a[key] < b[key]) return -1
+        if (a[key] > b[key]) return 1
+        return 0
+      })
     },
     resetForm() {
       this.campaign = {

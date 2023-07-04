@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     save() {
-      this.$emit('saveCampaign', this.campaign)
+      this.$emit('saveCampaign', ...this.campaign)
     }
   }
 }

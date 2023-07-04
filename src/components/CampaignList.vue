@@ -1,6 +1,11 @@
 <template>
   <main v-if="campaigns.length">
     <h2>📈 Campaigns:</h2>
+    <div class="sort-buttons">
+      <button @click="sortBy('name')">🡓 Sort by Name</button>
+      <button @click="sortBy('radius')">🡓 Sort by Radius</button>
+      <button @click="sortBy('amount')">🡓 Sort by Amount</button>
+    </div>
     <div v-for="(campaign, index) in campaigns" :key="campaign.id" class="campaign-item">
       <h3>🚀 {{ campaign.name }}</h3>
       <p><strong>Keywords: </strong> keyword, {{ campaign.keywords }}</p>
@@ -38,6 +43,9 @@ export default {
     },
     edit(index) {
       this.$emit('edit', index)
+    },
+    sortBy(key) {
+      this.$emit('sortBy', key)
     }
   }
 }
@@ -49,6 +57,18 @@ main {
   background-color: #f8f8f8;
   padding: 20px;
   border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  margin: 5px;
+  margin-bottom: 10px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 9px;
 }
 .campaign-item {
   background-color: #fff;
