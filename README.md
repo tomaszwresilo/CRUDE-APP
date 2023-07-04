@@ -1,41 +1,48 @@
-# crude-app
+# Campaigns Management App 👨‍🏫
 
-This template should help get you started developing with Vue 3 in Vite.
+The Campaigns Management App is a web application designed to manage campaigns efficiently. It provides features to create, edit, and track campaigns, along with real-time fund management.
 
-## Recommended IDE Setup
+## Preview 🖼️
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+![campaigns-management-app](https://github.com/)
 
-## Customize configuration
+## Features 🌟
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Add new campaigns by filling out the campaign details in the form.
+- Specify campaign name, keywords, bid amount, fund, status, town, and radius.
+- Save the campaign and update the available fund accordingly.
+- Edit existing campaigns to modify their details.
+- Remove campaigns from the list and refund the campaign's fund.
+- View a list of all campaigns, including their details.
+- Emerald Fund displays the current available fund for campaigns.
 
-## Project Setup
+## Demo 🌐
 
-```sh
-npm install
-```
+You can try out the Campaigns Management App live by visiting the [Demo Link](https://earnest-gaufre-3eda65.netlify.app).
 
-### Compile and Hot-Reload for Development
+## Technology Stack 🔨
 
-```sh
-npm run dev
-```
+The Campaigns Management App is built using the following technologies:
 
-### Compile and Minify for Production
+| Technology | Description                   |
+| ---------- | ----------------------------- |
+| HTML       | Markup language for web pages |
+| CSS        | Stylesheet language           |
+| JavaScript | Programming language          |
+| Vue.js     | JavaScript framework          |
 
-```sh
-npm run build
-```
+## Getting Started 🚀
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+Open demo App website: [Demo Link](https://earnest-gaufre-3eda65.netlify.app)
 
-```sh
-npm run test:unit
-```
+## Usage 💡
 
-### Lint with [ESLint](https://eslint.org/)
+1. Fill out the campaign details in the form, including campaign name, keywords, bid amount, fund, status, town, and radius.
 
-```sh
-npm run lint
-```
+2. Click the "Enter" button or submit the form to save the campaign. If the campaign fund exceeds the available Emerald Fund, an alert will be displayed.
+
+3. To edit a campaign, click the "✏️" edit button next to the campaign. Update the details in the form and submit it to save the changes.
+
+4. To remove a campaign, click the "❌" delete button next to the campaign. The campaign will be removed from the list, and the fund will be refunded.
+
+5. View the list of campaigns below the form. Each campaign will display its details, including name, keywords, amount, fund, status, town, and radius.
