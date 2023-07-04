@@ -4,69 +4,30 @@
       <h1>Campaigns management APP 👨‍🏫</h1>
     </header>
 
-    <section class="fund-section">
-      <h2>Emerald Fund 💸</h2>
-      <p><strong>Quantity:</strong> {{ emeraldFund }}</p>
-    </section>
+    <EmeraldFund :emeraldFund="emeraldFund" />
 
-    <section class="campaign-section">
-      <form @submit="saveCampaign">
-        <label for="name">📄 Campaign Name:</label>
-        <input type="text" id="name" v-model="campaign.name" required /><br />
+    <CampaignForm :campaign="campaign" :towns="towns" @saveCampaign="saveCampaign" />
 
-        <label for="keywords">💬 Keywords:</label>
-        <input type="text" id="keywords" v-model="campaign.keywords" required /><br />
-
-        <label for="bidAmount">💵 Bid Amount:</label>
-        <input type="number" id="bidAmount" v-model="campaign.amount" min="100" required /><br />
-
-        <label for="fund">💸 Campaign Fund:</label>
-        <input type="number" id="fund" v-model="campaign.fund" required /><br />
-
-        <label for="status">📌 Status:</label>
-        <select id="status" v-model="campaign.status" required>
-          <option value="On">On</option>
-          <option value="Off">Off</option></select
-        ><br />
-
-        <label for="town">🏠 Town:</label>
-        <select id="town" v-model="campaign.town" required>
-          <option v-for="town in towns" :value="town" :key="town">{{ town }}</option></select
-        ><br />
-
-        <label for="radius">📍 Radius (km):</label>
-        <input id="radius" v-model="campaign.radius" type="number" min="0" required /><br />
-
-        <button type="submit">Enter</button>
-      </form>
-    </section>
-
-    <main v-if="campaigns.length">
-      <h2>📈 Campaigns:</h2>
-      <div v-for="(campaign, index) in campaigns" :key="campaign.id" class="campaign-item">
-        <h3>🚀 {{ campaign.name }}</h3>
-        <p><strong>Keywords: </strong> keyword, {{ campaign.keywords }}</p>
-        <p><strong>Amount:</strong> {{ campaign.amount }}</p>
-        <p><strong>Fund:</strong> {{ campaign.fund }}</p>
-        <p><strong>Status:</strong> {{ campaign.status }}</p>
-        <p><strong>Town:</strong> {{ campaign.town }}</p>
-        <p><strong>Radius:</strong> {{ campaign.radius }}</p>
-        <button id="deleteButton" @click="remove(index)" v-if="index !== editedCampaignIndex">
-          ❌
-        </button>
-        <button id="editButton" @click="edit(index)" v-if="index !== editedCampaignIndex">
-          ✏️
-        </button>
-        <div v-if="index === editedCampaignIndex">
-          <strong>Edit Mode✏️</strong>
-        </div>
-      </div>
-    </main>
+    <CampaignList
+      :campaigns="campaigns"
+      :editedCampaignIndex="editedCampaignIndex"
+      @remove="remove"
+      @edit="edit"
+    />
   </div>
 </template>
 
 <script>
+import EmeraldFund from '/src/components/EmeraldFund.vue'
+import CampaignForm from '/src/components/CampaignForm.vue'
+import CampaignList from '/src/components/CampaignList.vue'
+
 export default {
+  components: {
+    EmeraldFund,
+    CampaignForm,
+    CampaignList
+  },
   data() {
     return {
       campaign: {
@@ -86,23 +47,22 @@ export default {
     }
   },
   methods: {
-    saveCampaign(event) {
+    saveCampaign(campaign) {
       event.preventDefault()
-      if (this.emeraldFund < this.campaign.fund) {
+      if (this.emeraldFund < campaign.fund) {
         alert('Out of money!')
-        // naprawić problem kiedy jest zmiana ze 100k na 950k i pokazuje out of money
       } else {
         if (this.editedCampaignIndex !== null) {
-          const updatedCampaign = { ...this.campaign }
+          const updatedCampaign = { ...campaign }
           const previousFund = this.campaigns[this.editedCampaignIndex].fund
           this.campaigns.splice(this.editedCampaignIndex, 1, updatedCampaign)
           this.emeraldFund += previousFund
-          this.emeraldFund -= parseInt(this.campaign.fund)
+          this.emeraldFund -= parseInt(campaign.fund)
           this.editedCampaignIndex = null
         } else {
-          this.campaign.id = Date.now()
-          this.campaigns.push({ ...this.campaign })
-          this.emeraldFund -= parseInt(this.campaign.fund)
+          campaign.id = Date.now()
+          this.campaigns.push({ ...campaign })
+          this.emeraldFund -= parseInt(campaign.fund)
         }
         this.resetForm()
       }
