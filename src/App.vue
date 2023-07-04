@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="wrapper">
     <header>
       <h1>Campaigns management APP 👨‍🏫</h1>
     </header>
@@ -138,7 +138,9 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #f8f8f8, #e6e6e6);
+  background-image: url('./src/img/stacked-peaks-haikei.svg');
+  background-repeat: repeat-x;
+  background-color: #f3f3f3;
 }
 
 header {
@@ -170,6 +172,12 @@ h1 {
 
 .campaign-section {
   margin-bottom: 40px;
+}
+
+#wrapper {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 form label {
@@ -249,5 +257,11 @@ p {
   border: none;
   cursor: pointer;
   outline: none;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-image: none;
+  }
 }
 </style>
