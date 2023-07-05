@@ -57,6 +57,8 @@ export default {
       event.preventDefault()
       if (this.emeraldFund < campaign.fund) {
         this.outOfMoney = true
+        this.editedCampaignIndex = null
+        this.resetForm()
       } else {
         this.outOfMoney = false
         if (this.editedCampaignIndex !== null) {
@@ -134,7 +136,7 @@ h1 {
 
 h2 {
   margin-top: 0;
-  font-size: 20px;
+  font-size: 22px;
   color: #333;
 }
 
@@ -149,7 +151,7 @@ p {
   margin: 0;
   margin-bottom: 10px;
   margin-top: 10px;
-  font-size: 16px;
+  font-size: 18px;
   color: #555;
 }
 

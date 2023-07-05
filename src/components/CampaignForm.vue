@@ -1,6 +1,6 @@
 <template>
   <section class="campaign-section">
-    <form @submit="save" @keydown.enter="save">
+    <form @submit.prevent="save" @keydown.enter="save">
       <label for="name">📄 Campaign Name:</label>
       <input type="text" id="name" v-model="campaign.name" required /><br />
 
@@ -46,7 +46,47 @@ export default {
   },
   methods: {
     save() {
-      this.$emit('saveCampaign', this.campaign)
+      if (this.validateForm()) {
+        this.$emit('saveCampaign', this.campaign)
+      }
+    },
+    validateForm() {
+      if (!this.campaign.name) {
+        alert('Please enter a campaign name.')
+        return false
+      }
+
+      if (!this.campaign.keywords) {
+        alert('Please enter keywords.')
+        return false
+      }
+
+      if (this.campaign.amount < 100) {
+        alert('Bid amount must be at least 100.')
+        return false
+      }
+
+      if (!this.campaign.fund) {
+        alert('Please enter a campaign fund.')
+        return false
+      }
+
+      if (!this.campaign.status) {
+        alert('Please select a status.')
+        return false
+      }
+
+      if (!this.campaign.town) {
+        alert('Please select a town.')
+        return false
+      }
+
+      if (this.campaign.radius < 0) {
+        alert('Radius must be a positive number or zero.')
+        return false
+      }
+
+      return true
     }
   }
 }
@@ -66,6 +106,7 @@ form select {
   border-radius: 4px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 form button {

@@ -30,7 +30,7 @@
       >
         ✏️
       </button>
-      <div v-if="index === editedCampaignIndex">
+      <div id="editMode" v-if="index === editedCampaignIndex">
         <strong>Edit Mode✏️</strong>
       </div>
     </div>
@@ -81,6 +81,8 @@ button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 9px;
+  color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
 }
 .campaign-item {
   background-color: #fff;
@@ -97,5 +99,22 @@ button {
   border: none;
   cursor: pointer;
   outline: none;
+}
+
+#editMode {
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 10px;
+}
+@media only screen and (max-width: 600px) {
+  button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20%;
+    font-size: 12px;
+    text-align: center;
+  }
 }
 </style>
