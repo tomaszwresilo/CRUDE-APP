@@ -59,10 +59,6 @@ export default {
   },
   data() {
     return {
-      campaign: {
-        name: '',
-        keywords: ''
-      },
       keywordOptions: [
         'important',
         'check emails',
