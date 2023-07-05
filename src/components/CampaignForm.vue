@@ -1,6 +1,6 @@
 <template>
   <section class="campaign-section">
-    <form @submit="save" @keydown.enter.prevent>
+    <form @submit="save" @keydown.enter="save">
       <label for="name">📄 Campaign Name:</label>
       <input type="text" id="name" v-model="campaign.name" required /><br />
 

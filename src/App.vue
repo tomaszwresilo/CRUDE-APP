@@ -1,9 +1,9 @@
 <template>
   <div id="wrapper">
     <header>
-      <h1>Campaigns management APP 👨‍🏫</h1>
+      <h1>Campaigns Management APP 👨‍🏫</h1>
     </header>
-
+    <ModalEnterKey />
     <EmeraldFund :emeraldFund="emeraldFund" />
 
     <CampaignForm :campaign="campaign" :towns="towns" @saveCampaign="saveCampaign" />
@@ -22,12 +22,14 @@
 import EmeraldFund from '/src/components/EmeraldFund.vue'
 import CampaignForm from '/src/components/CampaignForm.vue'
 import CampaignList from '/src/components/CampaignList.vue'
+import ModalEnterKey from '/src/components/ModalEnterKey.vue'
 
 export default {
   components: {
     EmeraldFund,
     CampaignForm,
-    CampaignList
+    CampaignList,
+    ModalEnterKey
   },
   data() {
     return {
