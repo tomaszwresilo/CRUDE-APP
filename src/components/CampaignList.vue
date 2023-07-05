@@ -8,7 +8,7 @@
     </div>
     <div v-for="(campaign, index) in campaigns" :key="campaign.id" class="campaign-item">
       <h2>🚀 {{ campaign.name }}</h2>
-      <p><strong>Keywords: </strong> keyword, {{ campaign.keywords }}</p>
+      <p><strong>Keywords: </strong> {{ campaign.keywords }}</p>
       <p><strong>Amount:</strong> {{ campaign.amount }}</p>
       <p><strong>Fund:</strong> {{ campaign.fund }}</p>
       <p><strong>Status:</strong> {{ campaign.status }}</p>

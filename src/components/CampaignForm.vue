@@ -5,7 +5,19 @@
       <input type="text" id="name" v-model="campaign.name" required /><br />
 
       <label for="keywords">💬 Keywords:</label>
-      <input type="text" id="keywords" v-model="campaign.keywords" required /><br />
+      <input
+        type="text"
+        id="keywords"
+        v-model="campaign.keywords"
+        @input="handleKeywordInput"
+        required
+      /><br />
+
+      <ul v-if="campaign.keywords.length > 0">
+        <li v-for="option in filteredOptions" :key="option" @click="selectKeyword(option)">
+          {{ option }}
+        </li>
+      </ul>
 
       <label for="bidAmount">💵 Bid Amount:</label>
       <input type="number" id="bidAmount" v-model="campaign.amount" min="100" required /><br />
@@ -20,7 +32,8 @@
       ><br />
 
       <label for="town">🏠 Town:</label>
-      <select id="town" v-model="campaign.town" required>
+      <select id="town" placeholder="Select a Town" v-model="campaign.town" required>
+        <option value="" disabled selected hidden>Select your Town</option>
         <option v-for="town in towns" :value="town" :key="town">{{ town }}</option></select
       ><br />
 
@@ -44,11 +57,46 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      campaign: {
+        name: '',
+        keywords: ''
+      },
+      keywordOptions: [
+        'important',
+        'check emails',
+        'create new brand',
+        'app',
+        'technology',
+        'keyword'
+      ],
+      filteredOptions: []
+    }
+  },
   methods: {
     save() {
       if (this.validateForm()) {
         this.$emit('saveCampaign', this.campaign)
       }
+    },
+    handleKeywordInput() {
+      const input = this.campaign.keywords.toLowerCase().trim()
+      if (input === '') {
+        this.filteredOptions = []
+      } else {
+        const lastWord = input.split(',').pop().trim()
+        this.filteredOptions = this.keywordOptions.filter((option) =>
+          option.toLowerCase().startsWith(lastWord)
+        )
+      }
+    },
+    selectKeyword(option) {
+      const input = this.campaign.keywords.toLowerCase().trim()
+      const words = input.split(',')
+      words[words.length - 1] = option
+      this.campaign.keywords = words.join(', ')
+      this.filteredOptions = []
     },
     validateForm() {
       if (!this.campaign.name) {
@@ -92,6 +140,20 @@ export default {
 }
 </script>
 <style scoped>
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+li {
+  padding: 8px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
 form label {
   font-weight: bold;
 }
