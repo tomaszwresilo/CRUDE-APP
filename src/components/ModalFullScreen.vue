@@ -2,7 +2,7 @@
   <div class="backdrop" v-if="statusHide">
     <div class="modal">
       <h2>Campaigns Management ✨</h2>
-      <p>You can also use Enter key to add campaign 😉</p>
+      <p :class="{ 'red-text': textValue === 'Out of money!' }">{{ textValue }}</p>
       <button @click="hide">X</button>
     </div>
   </div>
@@ -10,6 +10,12 @@
 
 <script>
 export default {
+  props: {
+    textValue: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       statusHide: true
@@ -23,14 +29,28 @@ export default {
 }
 </script>
 <style scoped>
+p {
+  font-size: 20px;
+}
 span {
   cursor: pointer;
 }
 
 button {
   all: unset;
-  color: #4caf50;
+  color: black;
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #f3f3f3;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+button:hover {
+  background-color: #e0e0e0;
+}
+
 .modal {
   width: 400px;
   padding: 20px;
@@ -54,5 +74,8 @@ button {
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+}
+.red-text {
+  color: red;
 }
 </style>

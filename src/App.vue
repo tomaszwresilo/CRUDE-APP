@@ -3,11 +3,11 @@
     <header>
       <h1>Campaigns Management APP 👨‍🏫</h1>
     </header>
-    <ModalEnterKey />
+    <ModalFullScreen :textValue="enterKeyText" />
     <EmeraldFund :emeraldFund="emeraldFund" />
 
     <CampaignForm :campaign="campaign" :towns="towns" @saveCampaign="saveCampaign" />
-
+    <ModalFullScreen v-if="outOfMoney" :textValue="outOfMoneyText" />
     <CampaignList
       :campaigns="campaigns"
       :editedCampaignIndex="editedCampaignIndex"
@@ -22,14 +22,14 @@
 import EmeraldFund from '/src/components/EmeraldFund.vue'
 import CampaignForm from '/src/components/CampaignForm.vue'
 import CampaignList from '/src/components/CampaignList.vue'
-import ModalEnterKey from '/src/components/ModalEnterKey.vue'
+import ModalFullScreen from '/src/components/ModalFullScreen.vue'
 
 export default {
   components: {
     EmeraldFund,
     CampaignForm,
     CampaignList,
-    ModalEnterKey
+    ModalFullScreen
   },
   data() {
     return {
@@ -43,18 +43,22 @@ export default {
         town: '',
         radius: 0
       },
+      enterKeyText: 'You can also use Enter key to add campaign 😉',
+      outOfMoneyText: 'Out of money!',
       towns: ['Cracov', 'Warsaw', 'Wroclaw'],
       campaigns: [],
       editedCampaignIndex: null,
-      emeraldFund: 1000000
+      emeraldFund: 1000000,
+      outOfMoney: false
     }
   },
   methods: {
     saveCampaign(campaign) {
       event.preventDefault()
       if (this.emeraldFund < campaign.fund) {
-        alert('Out of money!')
+        this.outOfMoney = true
       } else {
+        this.outOfMoney = false
         if (this.editedCampaignIndex !== null) {
           const updatedCampaign = { ...campaign }
           const previousFund = this.campaigns[this.editedCampaignIndex].fund
